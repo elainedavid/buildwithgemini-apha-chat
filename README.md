@@ -1,194 +1,128 @@
 <div align="center">
 
-<img src="assets/build-with-gemini-banner.png" alt="Build with Gemini" width="100%" />
+# 🌟 APHA Community & Learning Assistant
 
-# 🚀 Build with Gemini · Track 3
-
-### The starter kit for Track 3 of the Build with Gemini World Tour, and a showcase of what participants built with it.
-
-Clone this repo, open [Antigravity](https://antigravity.google), and build your own agent-first app on Google Cloud. Every project in the [gallery below](#-featured-projects) was built the same way: prototyped with Antigravity and `agents-cli`, equipped with Memory, tools, storage, and RAG, deployed to Agent Platform, and given a face on Cloud Run.
-
-<br/>
+### A conversational AI agent helping Pranic Healing students & practitioners discover workshops, track certification progress, and connect with local study groups.
 
 ![Build with Gemini](https://img.shields.io/badge/Build%20with%20Gemini-World%20Tour-4285F4?logo=google&logoColor=white)
-![Track 3](https://img.shields.io/badge/Track%203-Agent--First%20Apps-EA4335)
 ![Google Cloud](https://img.shields.io/badge/Google%20Cloud-Agent%20Platform-4285F4?logo=googlecloud&logoColor=white)
 ![Built with ADK](https://img.shields.io/badge/Built%20with-ADK%20%2B%20agents--cli-34A853)
-![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen)
-![Projects](https://img.shields.io/badge/Projects-0-blue)
-
-<sub>📖 <a href="https://cszhu.github.io/build-with-gemini/">Lab Guide</a> · 🛠️ <a href="https://google.github.io/agents-cli/guide/getting-started/">agents-cli</a> · 🤖 <a href="https://google.github.io/adk-docs/">ADK</a></sub>
+![UI](https://img.shields.io/badge/UI-A2UI%20Cards%20%2B%20FastAPI-EA4335)
 
 </div>
 
 ---
 
-## 📚 Table of Contents
+## 📖 Overview
 
-- [🧩 Anatomy of a Track 3 Project](#-anatomy-of-a-track-3-project)
-- [🏷️ Capability Legend](#️-capability-legend)
-- [📂 Featured Projects](#-featured-projects)
-  - [🛍️ Commerce & Marketplace Agents](#️-commerce--marketplace-agents)
-  - [🍳 Food & Recipe Agents](#-food--recipe-agents)
-  - [✈️ Travel & Local Agents](#️-travel--local-agents)
-  - [💪 Health, Fitness & Wellness Agents](#-health-fitness--wellness-agents)
-  - [📚 Learning & Knowledge Agents](#-learning--knowledge-agents)
-  - [🎨 Creative & Media Agents](#-creative--media-agents)
-  - [🏢 Productivity & Enterprise Agents](#-productivity--enterprise-agents)
-  - [🧪 Experimental & Other](#-experimental--other)
-- [🧠 What's in this Repo](#-whats-in-this-repo)
-- [🧰 Build Your Own](#-build-your-own)
-- [📚 Resources](#-resources)
-- [🤝 Contributing](#-contributing)
-- [📄 License](#-license)
+The **APHA Community & Learning Assistant** is an agentic web application designed for the American Pranic Healing Association (APHA) community. It guides practitioners through their certification journey, answers questions grounded in official course materials and policies, provides interactive workshop calculators, and displays upcoming events and local study groups through rich visual cards.
 
 ---
 
-## 🧩 Anatomy of a Track 3 Project
+## ✨ Key Features
 
-Every app in this collection is built from the same set of Google Cloud building blocks introduced in the lab. Once you understand this shape, you can read any project here at a glance:
-
-| Layer | What it does | Powered by |
-|---|---|---|
-| 🤖 **The Agent** | The core reasoning loop | [ADK](https://google.github.io/adk-docs/) + [`agents-cli`](https://google.github.io/agents-cli/guide/getting-started/), scaffolded with [Antigravity](https://antigravity.google) |
-| 🧠 **Memory** | Remembers facts across sessions | [Agent Platform Memory Bank](https://docs.cloud.google.com/gemini-enterprise-agent-platform/scale/memory-bank) |
-| 🗄️ **Structured data** | Inventory, records, lists | [Firestore](https://console.cloud.google.com/firestore) |
-| 🖼️ **Files & blobs** | Images, media, assets | [Cloud Storage](https://console.cloud.google.com/storage) |
-| 🔧 **Tools** | Take real actions and fetch real data | ADK function tools |
-| 📖 **RAG** | Answers grounded in your documents | [Vertex AI RAG Engine](https://console.cloud.google.com/agent-platform/rag) |
-| 🎨 **Media generation** | Creates images (and video) on demand | `gemini-3.1-flash-lite-image` (Nano Banana 2 Lite) · Omni (video) |
-| 🧪 **Code sandbox** | Safely runs generated code | Agent Platform code execution |
-| 🪟 **Agent-first UI** | Cards and tables instead of plain text | [A2UI](https://adk.dev/integrations/a2ui/) |
-| 🌐 **Frontend** | A shareable web face | FastAPI proxy on [Cloud Run](https://cloud.google.com/run) |
+- 🎓 **Personalized Certification Journey**: Tracks completed prerequisites (e.g., *Basic Pranic Healing*, *Advanced Pranic Healing*, *Pranic Psychotherapy*) and active goals (e.g., *Associate Certified Pranic Healer*) across sessions.
+- 📅 **Interactive Event & Study Group Lookup**: Filters upcoming APHA workshops, Twin Hearts group meditations, and local study group meetups by region, date, and experience level.
+- 🪟 **Rich A2UI Display Cards & Tables**: Renders event details, schedules, and catalog entries as structured UI cards rather than plain markdown text.
+- 💰 **Workshop Fee & Discount Calculator**: Dynamically calculates package bundle pricing, early-bird registration discounts, and multi-course registration fees using isolated code execution.
+- 📖 **RAG-Grounded FAQ Knowledge**: Answers queries accurately on APHA policies, course prerequisites, and Pranic Healing guidelines backed by Vertex AI RAG Engine.
+- 🎨 **Milestone Badges & Banners**: Generates custom digital achievement badges upon course completion and event promotional banners.
 
 ---
 
-## 🏷️ Capability Legend
+## 🧩 System Architecture
 
-Each project below is tagged with the building blocks it uses, so you can find exactly the pattern you want to learn:
-
-`🧠 Memory` · `🗄️ Firestore` · `🖼️ Storage` · `🔧 Tools` · `📖 RAG` · `🎨 Image Gen` · `🎬 Video` · `🧪 Sandbox` · `🪟 A2UI` · `🌐 Cloud Run`
-
----
-
-## 📂 Featured Projects
-
-A showcase of what workshop participants built with this lab. Entries are added here from the swag and gallery submission form after each event, so the categories below start empty and fill in over time. Browse them for inspiration, or [submit your own](#-contributing) once you've published your project with the `publish-to-github` skill.
-
-<!--
-Add one entry per project, in this format:
-- 🌿 **[Project Name](https://github.com/their-handle/their-repo)**: one-line description of what it does. <br/> <sub>`🗄️ Firestore` · `🎨 Image Gen` · `🪟 A2UI`, by [@handle](https://github.com/handle)</sub>
-
-Pick tags from the Capability Legend above. Bump the "Projects" badge count at the top when you add one.
--->
-
-### 🛍️ Commerce & Marketplace Agents
-
-### 🍳 Food & Recipe Agents
-
-### ✈️ Travel & Local Agents
-
-### 💪 Health, Fitness & Wellness Agents
-
-### 📚 Learning & Knowledge Agents
-
-### 🎨 Creative & Media Agents
-
-### 🏢 Productivity & Enterprise Agents
-
-### 🧪 Experimental & Other
-
----
-
-## 🧠 What's in this Repo
-
-The `.agents/` folder teaches Antigravity how to build agents on Google Cloud.
-
-### Skills
-
-A **skill** is a bundle of instructions that loads automatically when it's relevant, so the agent gets the workflow right in fewer steps instead of rediscovering it each time.
-
-| Skill | What it does |
-| --- | --- |
-| [`pick-your-agent-project`](.agents/skills/pick-your-agent-project/SKILL.md) | Brainstorm your app idea and write a project brief |
-| [`troubleshoot-lab-setup`](.agents/skills/troubleshoot-lab-setup/SKILL.md) | Verify your environment and fix common setup errors |
-| [`memory-bank-setup`](.agents/skills/setup-memory-bank/SKILL.md) | Add cross-session memory to your agent with Vertex AI Memory Bank |
-| [`rag-engine-setup`](.agents/skills/build-rag/SKILL.md) | Ground your agent on documents with a serverless Vertex AI RAG corpus |
-| [`enable-a2ui`](.agents/skills/enable-a2ui/SKILL.md) | Make your agent reply with rich UI cards (A2UI) in the ADK dev UI |
-| [`build-agent-frontend`](.agents/skills/build-agent-frontend/SKILL.md) | Generate a FastAPI chat frontend and ship it to Cloud Run |
-| [`record-demo`](.agents/skills/record-demo/SKILL.md) | Record a branded demo video of your agent, with an optional AI soundtrack |
-| [`publish-to-github`](.agents/skills/publish-to-github/SKILL.md) | Publish your finished project to your own GitHub and submit it for swag |
-
-### Pre-configured tools (MCP)
-
-[`.agents/mcp_config.json`](.agents/mcp_config.json) wires up two [Model Context Protocol](https://modelcontextprotocol.io/) servers that authenticate with your gcloud credentials, so the agent can look things up instead of guessing:
-
-- **Firebase**: work directly with Firestore and other Firebase services
-- **Google Developer Knowledge**: grounded access to Google's official docs (Cloud, Firebase, ADK, Agent Platform)
-
-### Layout
-
-```text
-.agents/
-├── mcp_config.json    # Firebase + Developer Knowledge MCP servers
-└── skills/            # the workshop skills listed above
+```mermaid
+graph TD
+    User([👤 Practitioner / Student]) <--> Frontend[🌐 FastAPI + React Chat UI\nCloud Run]
+    Frontend <-->|A2A Protocol| Runtime[🤖 Agent Engine / ADK Runtime\nGemini 3.1]
+    
+    subgraph Agent Capabilities & Tools
+        Runtime <--> Memory[🧠 Vertex AI Memory Bank\nSession & Fact Persistence]
+        Runtime <--> RAG[📖 Vertex AI RAG Engine\nAPHA Knowledge & Policies]
+        Runtime <--> Sandbox[🧪 Code Sandbox\nBundle & Fee Calculations]
+        Runtime <--> ImageGen[🎨 Image Generation\nBadges & Promotional Banners]
+        Runtime <--> A2UI[🪟 A2UI Renderer\nInteractive Cards & Tables]
+    end
 ```
 
 ---
 
-## 🧰 Build Your Own
+## 🧰 Technology Stack
 
-The full, step-by-step walkthrough lives on the **[lab guide](https://cszhu.github.io/build-with-gemini/)**. This is the short version.
+| Layer | Component | Powered By |
+|---|---|---|
+| 🤖 **Core Agent** | Reasoning & Intent Routing | [ADK](https://google.github.io/adk-docs/) + [`agents-cli`](https://google.github.io/agents-cli/) |
+| 🧠 **Memory** | Persistent Student Profiles & Progress | [Vertex AI Memory Bank](https://cloud.google.com/vertex-ai) |
+| 📖 **RAG Engine** | Knowledge Retrieval & Grounded Q&A | Vertex AI RAG Engine |
+| 🧪 **Code Sandbox** | Dynamic Pricing & Fee Calculations | Agent Platform Code Execution |
+| 🪟 **Agent UI** | Interactive Cards, Tables & Catalog Views | [A2UI Protocol](https://adk.dev/integrations/a2ui/) |
+| 🎨 **Image Generation** | Milestone Badges & Banners | Imagen / Gemini Visual Tools |
+| 🌐 **Frontend Proxy** | Web Interface & A2A Bridge | FastAPI on [Cloud Run](https://cloud.google.com/run) |
 
-**Prerequisites** (the lab workstation comes with all of this pre-installed; you'll need it if you're running on your own machine):
+---
 
-- A **Google Cloud project** with billing enabled
-- **[Antigravity](https://antigravity.google)** (`agy`), the coding agent that loads the skills above
-- **[agents-cli](https://google.github.io/agents-cli/guide/getting-started/)**, built on the [Agent Development Kit (ADK)](https://google.github.io/adk-docs/)
-- Authenticated gcloud: `gcloud auth login` and `gcloud auth application-default login`
-- A personal **GitHub account** for the final publish-and-submit step
+## 📁 Repository Structure
 
-**Quickstart:**
+```text
+.
+├── apha-community-learning-as/   # Core Agent codebase & A2UI / FastAPI frontend
+│   ├── src/                       # Frontend UI and FastAPI proxy handlers
+│   ├── agent.py                   # ADK Agent definition & tool registrations
+│   ├── agents-cli-manifest.yaml   # Agent Engine deployment manifest
+│   └── package.json               # Frontend dependencies & build scripts
+├── .agents/                       # Antigravity agent skills & configuration
+│   ├── mcp_config.json            # Model Context Protocol tools (Firebase & Developer Docs)
+│   └── skills/                    # Automated workflow skills
+├── create_memory_bank.py          # Vertex AI Memory Bank initialization script
+├── project_brief.md               # Original project specification & eval criteria
+└── README.md                      # Project documentation
+```
+
+---
+
+## 🚀 Quickstart & Local Setup
+
+### Prerequisites
+
+- [Google Cloud SDK](https://cloud.google.com/sdk) (`gcloud`) authenticated via `gcloud auth login` and `gcloud auth application-default login`
+- [Node.js](https://nodejs.org/) (v18+) & Python 3.10+
+- [`agents-cli`](https://google.github.io/agents-cli/) installed
+
+### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/cszhu/build-with-gemini
-cd build-with-gemini
-agy
+git clone https://github.com/elainedavid/buildwithgemini-apha-chat.git
+cd buildwithgemini-apha-chat
 ```
 
-On startup, Antigravity scans the `.agents/` folder and loads the skills and tools above automatically. In the AGY prompt:
+### 2. Configure Environment
 
-```text
-/skills            # see the installed skills
-/mcp               # confirm the firebase + google-developer-knowledge tools are connected
+Create a `.env` file in the agent directory with your Google Cloud Project details:
+
+```env
+GCP_PROJECT=your-gcp-project-id
+GCP_REGION=us-central1
 ```
 
-```text
-Verify my setup.   # runs the troubleshoot-lab-setup skill to check your environment
-```
+### 3. Run the Agent Locally
 
-Then follow the [lab guide](https://cszhu.github.io/build-with-gemini/) to design, build, deploy, and share your agent, start to finish.
+```bash
+cd apha-community-learning-as
+agents-cli dev
+```
 
 ---
 
-## 📚 Resources
+## 💬 Sample Queries to Try
 
-- **[Lab guide](https://cszhu.github.io/build-with-gemini/)**: the step-by-step workshop
-- [Antigravity](https://antigravity.google)
-- [agents-cli](https://google.github.io/agents-cli/guide/getting-started/)
-- [Agent Development Kit (ADK)](https://google.github.io/adk-docs/)
-- [Gemini Enterprise Agent Platform](https://docs.cloud.google.com/gemini-enterprise-agent-platform)
-
----
-
-## 🤝 Contributing
-
-**Built something?** Publish it with the `publish-to-github` skill and submit it through the form it gives you. Submissions get you swag, and standout projects get added to the [Featured Projects](#-featured-projects) gallery above.
-
-**Found a bug?** If you hit a rough edge in a skill or the lab, please [open an issue](https://github.com/cszhu/build-with-gemini/issues).
+- *"I've taken Basic Pranic Healing. What upcoming Advanced courses can I take near Los Angeles, and what are the prerequisites?"*
+- *"Can you calculate the total cost for registering 2 students for the Advanced Pranic Healing workshop with the early-bird discount?"*
+- *"Show me upcoming Twin Hearts meditation group schedules in a card view."*
+- *"Remember that I completed my Pranic Psychotherapy course in May 2026."*
 
 ---
 
 ## 📄 License
 
-This is not an officially supported Google product and is provided for the Build with Gemini workshop for demonstration purposes only.
+This repository was created as part of the **Build with Gemini** workshop series. Provided for demonstration purposes.
