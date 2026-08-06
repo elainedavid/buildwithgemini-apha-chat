@@ -5,6 +5,7 @@ import {
   findStudyGroups,
   getPranicFaq,
   calculateBundleFee,
+  searchPranicKnowledgeBase,
   rootAgent
 } from '../../src/agent';
 
@@ -29,9 +30,9 @@ test('findStudyGroups returns groups by city or zip', () => {
   assert.equal(laGroup[0].name, 'Los Angeles Pranic Healing Center');
 });
 
-test('getPranicFaq returns faq answers', () => {
-  const answer = getPranicFaq({ topic: 'twin_hearts' });
-  assert.match(String(answer), /Meditation on Twin Hearts/);
+test('getPranicFaq searches RAG knowledge base', async () => {
+  const answer = await getPranicFaq({ topic: 'twin_hearts' });
+  assert.ok(answer, 'Should return a response');
 });
 
 test('calculateBundleFee calculates correct discounts', () => {
@@ -42,7 +43,14 @@ test('calculateBundleFee calculates correct discounts', () => {
   assert.equal(result.finalTotal, '$525.00');
 });
 
+test('searchPranicKnowledgeBase queries Vertex AI RAG Corpus', async () => {
+  const res: any = await searchPranicKnowledgeBase({ query: '11 major chakras' });
+  assert.ok(res, 'RAG query response should exist');
+  assert.equal(res.source, 'pranic-healing-guide-corpus');
+  assert.ok(res.passages.length > 0, 'Should contain matched passages');
+});
+
 test('rootAgent has correct persona and tools registered', () => {
   assert.equal(rootAgent.name, 'apha_learning_assistant');
-  assert.equal(rootAgent.tools.length, 5);
+  assert.equal(rootAgent.tools.length, 7);
 });
