@@ -1,5 +1,5 @@
 {
-  "name": "apha-community-learning-as",
+  "name": "apha_community_learning_as",
   "version": "1.0.0",
   "description": "Simple ReAct agent Agent generated with `agents-cli` version `1.2.1`",
   "main": "index.js",
